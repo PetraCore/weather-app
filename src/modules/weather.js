@@ -5,6 +5,32 @@ export default class Weather {
       { mode: "cors" }
     );
     const data = await response.json();
-    return data;
+    return this.processData(data);
+  }
+
+  processData(data) {
+    const location = data.location;
+    const current = data.current;
+
+    return {
+      name: location.name,
+      country: location.country,
+      text: current.condition.text,
+      icon: current.condition.icon,
+      temp_c: current.temp_c,
+      temp_f: current.temp_f,
+      details: {
+        feelslike: {
+          feelslike_c: current.feelslike_c,
+          feelslike_f: current.feelslike_f,
+        },
+        humidity: current.humidity,
+        wind: {
+          wind_kph: current.wind_kph,
+          wind_mph: current.wind_mph,
+          wind_dir: current.wind_dir,
+        },
+      },
+    };
   }
 }

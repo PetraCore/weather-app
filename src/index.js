@@ -1,7 +1,6 @@
 import "normalize.css";
 import "./style.css";
-import Weather from "./modules/weather";
+import Composer from "./modules/composer";
 
-// const weather = new Weather();
-// const data = await weather.fetchData("london");
-// console.log(data);
+const composer = new Composer();
+composer.initApp();
