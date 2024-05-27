@@ -111,4 +111,11 @@ export default class Painter {
 
     return weatherDetails;
   }
+
+  createErrorMessage(message) {
+    const errorMessage = document.createElement("div");
+    errorMessage.classList.add("error-message");
+    errorMessage.innerText = message;
+    return errorMessage;
+  }
 }

@@ -5,6 +5,9 @@ export default class Weather {
       { mode: "cors" }
     );
     const data = await response.json();
+    if (data.error) {
+      throw new Error(data.error.message);
+    }
     return this.processData(data);
   }
 

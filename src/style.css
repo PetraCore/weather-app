@@ -128,6 +128,13 @@ body {
   justify-items: center;
 }
 
+#weatherContainer {
+  & .error-message {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
+
 .weather-card {
   background-color: white;
   padding: 30px;

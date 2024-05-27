@@ -14,13 +14,26 @@ export default class Composer {
     this.#weatherContainer.innerHTML = "";
   }
 
-  async displayWeather(query) {
-    const forecast = await this.#weather.fetchData(query);
-    console.log(forecast);
-
-    const weatherCard = this.#painter.createWeatherCard(forecast, this.#locale);
+  #displayError(message) {
+    const errorMessage = this.#painter.createErrorMessage(message);
     this.clearWeather();
-    this.#weatherContainer.appendChild(weatherCard);
+    this.#weatherContainer.appendChild(errorMessage);
+  }
+
+  async displayWeather(query) {
+    if (query === "") return;
+    try {
+      const forecast = await this.#weather.fetchData(query);
+      const weatherCard = this.#painter.createWeatherCard(
+        forecast,
+        this.#locale
+      );
+
+      this.clearWeather();
+      this.#weatherContainer.appendChild(weatherCard);
+    } catch (error) {
+      this.#displayError(error);
+    }
   }
 
   activateSearchBox() {
