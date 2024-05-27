@@ -1,3 +1,5 @@
+import LoadingIndicator from "../assets/loading.gif";
+
 export default class Painter {
   #capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -117,5 +119,16 @@ export default class Painter {
     errorMessage.classList.add("error-message");
     errorMessage.innerText = message;
     return errorMessage;
+  }
+
+  createLoadingIndicator() {
+    const loadingIndicator = document.createElement("div");
+    loadingIndicator.classList.add("loading-indicator");
+
+    const loadingImage = document.createElement("img");
+    loadingImage.src = LoadingIndicator;
+    loadingIndicator.appendChild(loadingImage);
+
+    return loadingIndicator;
   }
 }

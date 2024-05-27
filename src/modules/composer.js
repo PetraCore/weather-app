@@ -14,6 +14,12 @@ export default class Composer {
     this.#weatherContainer.innerHTML = "";
   }
 
+  #displayLoadingIndicator() {
+    const loadingIndicator = this.#painter.createLoadingIndicator();
+    this.clearWeather();
+    this.#weatherContainer.appendChild(loadingIndicator);
+  }
+
   #displayError(message) {
     const errorMessage = this.#painter.createErrorMessage(message);
     this.clearWeather();
@@ -23,6 +29,8 @@ export default class Composer {
   async displayWeather(query) {
     if (query === "") return;
     try {
+      this.#displayLoadingIndicator();
+
       const forecast = await this.#weather.fetchData(query);
       const weatherCard = this.#painter.createWeatherCard(
         forecast,

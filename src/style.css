@@ -129,13 +129,19 @@ body {
 }
 
 #weatherContainer {
+  display: grid;
   & .error-message {
     font-size: 2rem;
     font-weight: bold;
   }
 }
 
+.loading-indicator {
+  align-self: center;
+}
+
 .weather-card {
+  align-self: flex-start;
   background-color: white;
   padding: 30px;
   border-radius: 20px;
