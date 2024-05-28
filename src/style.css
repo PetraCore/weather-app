@@ -285,6 +285,9 @@ body {
     justify-self: center;
     width: 100%;
   }
+  .weather-card {
+    margin: 40px 0;
+  }
 }
 
 @media (max-width: 480px) {
@@ -297,6 +300,9 @@ body {
   }
   .options {
     justify-content: center;
+  }
+  .weather-card {
+    margin: 20px 0;
   }
   .weather-details {
     justify-content: flex-start;
