@@ -131,4 +131,47 @@ export default class Painter {
 
     return loadingIndicator;
   }
+
+  createSwitchOption(id, option1Label, option2Label, isSwitched = false) {
+    const switchOption = document.createElement("div");
+    switchOption.classList.add("switch");
+    switchOption.id = id;
+    switchOption.tabIndex = 0;
+
+    const option1 = document.createElement("div");
+    option1.classList.add("state");
+    option1.innerHTML = option1Label;
+
+    const option2 = document.createElement("div");
+    option2.classList.add("state");
+    option2.innerHTML = option2Label;
+
+    if (isSwitched) {
+      option2.classList.add("active");
+    } else {
+      option1.classList.add("active");
+    }
+
+    switchOption.appendChild(option1);
+    switchOption.appendChild(option2);
+
+    return switchOption;
+  }
+
+  toggleSwitchOption(option) {
+    if (!option.classList.contains("switch")) {
+      console.error(
+        "Provided element does not support toggling! Ignoring request."
+      );
+      return;
+    }
+
+    const inactive = option.querySelector(":not(.active)");
+    const active = option.querySelector(".active");
+
+    inactive.classList.add("active");
+    active.classList.remove("active");
+
+    return option;
+  }
 }
