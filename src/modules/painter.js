@@ -1,4 +1,4 @@
-import LoadingIndicator from "../assets/loading.gif";
+import LoadingIndicator from "../assets/loading.svg";
 
 /**
  * This module is responsible for creating DOM elements. I named it "painter"
