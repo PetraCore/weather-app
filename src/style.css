@@ -178,6 +178,12 @@ body {
   }
 }
 
+.weather-location {
+  & .country {
+    font-weight: normal;
+  }
+}
+
 .weather-highlight {
   display: flex;
   justify-content: center;

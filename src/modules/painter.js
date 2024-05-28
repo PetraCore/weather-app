@@ -10,10 +10,10 @@ export default class Painter {
     weatherCard.classList.add("weather-card");
 
     weatherCard.innerHTML = `
-      <h1 class="weather-location">
-        ${weatherData.name},
-        ${weatherData.country}
-      </h1>
+      <div class="weather-location">
+        <h1 class="city">${weatherData.name}</h2>
+        <h2 class="country">${weatherData.country}</h2>
+      </div>
       <div class="weather-highlight">
         <div class="weather-temperature">
           ${
