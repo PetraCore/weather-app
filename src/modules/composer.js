@@ -9,6 +9,7 @@ export default class Composer {
     pref_celsius: true,
     pref_meters: true,
   };
+  #lastQuery = "London";
   #forecast = null;
 
   clearWeather() {
@@ -40,6 +41,8 @@ export default class Composer {
 
       this.clearWeather();
       this.#weatherContainer.appendChild(weatherCard);
+
+      localStorage.setItem("lastQuery", query);
     } catch (error) {
       this.#displayError(error);
     }
@@ -60,23 +63,27 @@ export default class Composer {
     const temperatureSwitch = this.#painter.createSwitchOption(
       "temperatureSwitch",
       "&deg;C",
-      "&deg;F"
+      "&deg;F",
+      !this.#locale.pref_celsius
     );
     const lengthSwitch = this.#painter.createSwitchOption(
       "lengthSwitch",
       "m",
-      "mi"
+      "mi",
+      !this.#locale.pref_meters
     );
 
     temperatureSwitch.addEventListener("click", () => {
       this.#painter.toggleSwitchOption(temperatureSwitch);
       this.#locale.pref_celsius = !this.#locale.pref_celsius;
       this.reloadWeather();
+      localStorage.setItem("locale", JSON.stringify(this.#locale));
     });
     lengthSwitch.addEventListener("click", () => {
       this.#painter.toggleSwitchOption(lengthSwitch);
       this.#locale.pref_meters = !this.#locale.pref_meters;
       this.reloadWeather();
+      localStorage.setItem("locale", JSON.stringify(this.#locale));
     });
 
     options.appendChild(temperatureSwitch);
@@ -98,9 +105,18 @@ export default class Composer {
     });
   }
 
+  loadStorage() {
+    const cachedLocale = JSON.parse(localStorage.getItem("locale"));
+    const cachedQuery = localStorage.getItem("lastQuery");
+
+    if (cachedLocale) this.#locale = cachedLocale;
+    if (cachedQuery) this.#lastQuery = cachedQuery;
+  }
+
   async initApp() {
+    this.loadStorage();
     this.activateSearchBox();
     this.displayOptions();
-    this.displayWeather("London");
+    this.displayWeather(this.#lastQuery);
   }
 }
