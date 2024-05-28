@@ -17,6 +17,9 @@ body {
     background-color: rgb(3, 112, 207);
     color: rgb(255, 255, 255);
   }
+
+  font-family: "Frank Ruhl Libre", serif;
+  font-optical-sizing: auto;
 }
 
 .wrapper#app {
