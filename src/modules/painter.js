@@ -1,5 +1,10 @@
 import LoadingIndicator from "../assets/loading.gif";
 
+/**
+ * This module is responsible for creating DOM elements. I named it "painter"
+ * to avoid the awkwardness of using acronyms (DOM) in the naming scheme.
+ */
+
 export default class Painter {
   #capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);

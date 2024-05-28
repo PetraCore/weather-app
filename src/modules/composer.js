@@ -1,6 +1,12 @@
 import Weather from "./weather";
 import Painter from "./painter";
 
+/**
+ * The purpose of this module is to utilize and integrate lower-level
+ * modules into higher level app logic. It is an intermediary of sorts,
+ * a "composer" - one could even say.
+ */
+
 export default class Composer {
   #weather = new Weather();
   #painter = new Painter();

@@ -1,3 +1,8 @@
+/**
+ * This module directly communicates with the Weather API and processes
+ * received data for higher-level modules.
+ */
+
 export default class Weather {
   async fetchData(query) {
     const response = await fetch(
