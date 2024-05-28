@@ -20,7 +20,7 @@ body {
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
 
   display: grid;
-  grid-template: 1fr / min-content 1fr min-content;
+  grid-template: 1fr / min-content min-content 1fr;
   gap: 30px;
   align-items: center;
 
@@ -28,6 +28,12 @@ body {
     font-size: 2.2rem;
     margin: 0;
   }
+}
+
+.options {
+  display: flex;
+  flex-flow: row-reverse wrap;
+  gap: 15px;
 }
 
 .search-box {

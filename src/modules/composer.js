@@ -58,17 +58,29 @@ export default class Composer {
   displayOptions() {
     const options = document.querySelector(".options");
     const temperatureSwitch = this.#painter.createSwitchOption(
-      "tempPreference",
+      "temperatureSwitch",
       "&deg;C",
       "&deg;F"
     );
+    const lengthSwitch = this.#painter.createSwitchOption(
+      "lengthSwitch",
+      "m",
+      "mi"
+    );
+
     temperatureSwitch.addEventListener("click", () => {
       this.#painter.toggleSwitchOption(temperatureSwitch);
       this.#locale.pref_celsius = !this.#locale.pref_celsius;
       this.reloadWeather();
     });
+    lengthSwitch.addEventListener("click", () => {
+      this.#painter.toggleSwitchOption(lengthSwitch);
+      this.#locale.pref_meters = !this.#locale.pref_meters;
+      this.reloadWeather();
+    });
 
     options.appendChild(temperatureSwitch);
+    options.appendChild(lengthSwitch);
   }
 
   activateSearchBox() {
