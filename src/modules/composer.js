@@ -9,7 +9,7 @@ export default class Composer {
     pref_celsius: true,
     pref_meters: true,
   };
-  #lastQuery = "London";
+  #lastQuery = "Brussels";
   #forecast = null;
 
   clearWeather() {
