@@ -236,6 +236,10 @@ body {
 
 .detail-value {
   font-weight: bold;
+  display: flex;
+  &:not(.weather-temperature) {
+    gap: 0.15ch;
+  }
 }
 
 .footer {
